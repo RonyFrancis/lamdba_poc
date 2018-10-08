@@ -6,7 +6,7 @@ ENV APP_HOME /home/app/webapp
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-# Install imagemagic
+# update packages
 RUN apt-get update -yq
 
 # use port 80

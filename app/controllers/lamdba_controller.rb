@@ -2,9 +2,7 @@
 class LamdbaController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
-    # @lamdba = Lamdba.new.details
     id = Lamdba.new.details(params['lamdba'])
-    # render json: { id: Lamdba.new.details(params['lamdba'])}
     redirect_to lamdba_path(id)
   end
 
