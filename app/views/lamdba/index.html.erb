@@ -1,0 +1,21 @@
+<% @lambda.each do |lambda| %>
+  <div class="" style="border:1px solid black;">
+    <div>
+      <div style="float:left;">
+        <%=label_tag('key') %>:
+      </div>
+      <div class="">
+        <%= lambda.key %>
+      </div>
+    </div>
+    <div>
+      <div style="float:left;">
+        <%= label_tag('square') %>:
+      </div>
+      <div class="">
+        <%= lambda.square_value %>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>

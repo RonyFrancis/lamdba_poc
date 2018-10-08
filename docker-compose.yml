@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - log:/home/app/webapp/log
+volumes:
+  log:
+    external: true
