@@ -1,0 +1,2 @@
+class ContactPhone < ApplicationRecord
+end
