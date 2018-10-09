@@ -8,11 +8,11 @@ class Lamdba < ApplicationRecord
                                             }.to_json,
                                             timeout: 10)
 
-    response = JSON.parse(@response.body)
-    @lamdba = Lamdba.new
-    @lamdba.key = response['key'].to_i
-    @lamdba.square_value = response['square_value'].to_i
-    @lamdba.save
-    @lamdba.id
+    # response = JSON.parse(@response.body)
+    # @lamdba = Lamdba.new
+    # @lamdba.key = response['key'].to_i
+    # @lamdba.square_value = response['square_value'].to_i
+    # @lamdba.save
+    Lamdba.last.id
   end
 end
