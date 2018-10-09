@@ -3,7 +3,7 @@ class Lamdba < ApplicationRecord
   def details(params)
     # RestClient.post ENV['url'], key: 1
     @lamdba = Lamdba.new
-    @lamdba.key = response['key'].to_i
+    @lamdba.key = params['key'].to_i
     @lamdba.save
     @response = RestClient::Request.execute(method: :post, url: ENV['url'],
                                             payload: {
