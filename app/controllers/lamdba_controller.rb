@@ -17,4 +17,8 @@ class LamdbaController < ApplicationController
   def index
     @lambda = Lamdba.all
   end
+
+  def welcome
+    render json: { msg: 'welcome' }
+  end
 end
