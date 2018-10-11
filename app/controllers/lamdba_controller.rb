@@ -19,6 +19,7 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
+    request.headers.each { |key, value| puts %(#{key} : #{value}) }
     render json: { msg: 'welcome' }
   end
 end
