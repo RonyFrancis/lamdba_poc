@@ -31,18 +31,17 @@ class LamdbaController < ApplicationController
     # data = "#{sequence_guid} \n #{payload}"
     # auth = OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
 
-    res = RestClient::Request.execute(method: :post,
-                                      url: "https://developers.deliveroo.net/v1/orders/#{params['order']['id']}/sync_status",
-                                      user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
-                                      password: '42c11fb4-d895-4529-9c3f-7de6332ef9a9',
-                                      payload: {
-                                        "occurred_at": Time.now,
-                                        "status": 'failed',
-                                        "reason": 'invalid_total_price',
-                                        "notes": ''
-                                      },
-                                      verify_ssl: false)
+    # res = RestClient::Request.execute(method: :post,
+    #                                   url: "https://developers.deliveroo.net/v1/orders/116504947708-5729/sync_status",
+    #                                   user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
+    #                                   password: '42c11fb4-d895-4529-9c3f-7de6332ef9a9',
+    #                                   payload: {
+    #                                     "occurred_at": Time.now,
+    #                                     "status": 'failed',
+    #                                     "reason": 'invalid_total_price',
+    #                                     "notes": ''
+    #                                   })
     Rails.logger.info res.body
-    render json: { msg: auth }
+    render json: { msg: "welcome" }
   end
 end
