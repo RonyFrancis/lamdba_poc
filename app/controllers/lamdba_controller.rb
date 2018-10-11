@@ -19,7 +19,7 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
-    request.headers.each { |key, value| puts %(#{key} : #{value}) }
+    request.headers.each { |key, value| Rails.logger.info %(#{key} : #{value}) }
     render json: { msg: 'welcome' }
   end
 end
