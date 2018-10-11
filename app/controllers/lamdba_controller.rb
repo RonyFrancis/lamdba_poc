@@ -32,7 +32,7 @@ class LamdbaController < ApplicationController
     # auth = OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
 
     res = RestClient::Request.execute(method: :post,
-                                      url: "https://developers.net/v1/orders/#{params['order']['id']}/sync_status",
+                                      url: "https://developers.deliveroo.net/v1/orders/#{params['order']['id']}/sync_status",
                                       user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
                                       password: '42c11fb4-d895-4529-9c3f-7de6332ef9a9',
                                       payload: {
