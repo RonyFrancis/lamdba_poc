@@ -23,6 +23,7 @@ class LamdbaController < ApplicationController
     # request.headers.each { |key, value| Rails.logger.info %(#{key} : #{value}) }
     Rails.logger.info 'a' * 10
     Rails.logger.info params['order']['id']
+    Rails.logger.info request.original_url
     Rails.logger.info 'a' * 10
     # webhook_secret = '8a10a0d9-3366-4486-a945-36c804572373'
     # sequence_guid = request.headers["HTTP_X_DELIVEROO_SEQUENCE_GUID"]
