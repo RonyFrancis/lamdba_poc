@@ -41,7 +41,6 @@ class LamdbaController < ApplicationController
     #                                     "reason": 'invalid_total_price',
     #                                     "notes": ''
     #                                   })
-    Rails.logger.info res.body
     render json: { msg: "welcome" }
   end
 end
