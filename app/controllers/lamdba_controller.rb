@@ -20,18 +20,19 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
-    # request.headers.each { |key, value| Rails.logger.info %(#{key} : #{value}) }
+    request.headers.each { |key, value| Rails.logger.info %(#{key} : #{value}) }
     Rails.logger.info 'a' * 10
     Rails.logger.info params['order']['id']
     Rails.logger.info request.original_url
     Rails.logger.info request.remote_ip
+    Rails.logger.info request.raw_post
     Rails.logger.info 'a' * 10
-    # webhook_secret = '8a10a0d9-3366-4486-a945-36c804572373'
-    # sequence_guid = request.headers["HTTP_X_DELIVEROO_SEQUENCE_GUID"]
-    #  payload = parms
-    # digest = OpenSSL::Digest.new('sha256')
-    # data = "#{sequence_guid} \n #{payload}"
-    # auth = OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
+    webhook_secret = '8a10a0d9-3366-4486-a945-36c804572373'
+    sequence_guid = request.headers["HTTP_X_DELIVEROO_SEQUENCE_GUID"]
+    payload = request.raw_post
+    digest = OpenSSL::Digest.new('sha256')
+    data = "#{sequence_guid} \n #{payload}"
+    Rails.logger.inf OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
 
     # res = RestClient::Request.execute(method: :post,
     #                                   url: "https://developers.deliveroo.net/v1/orders/116504947708-5729/sync_status",
