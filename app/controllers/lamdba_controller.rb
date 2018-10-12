@@ -28,12 +28,15 @@ class LamdbaController < ApplicationController
     Rails.logger.info request.raw_post
     Rails.logger.info 'a' * 10
     webhook_secret = '8a10a0d9-3366-4486-a945-36c804572373'
-    sequence_guid = request.headers["HTTP_X_DELIVEROO_SEQUENCE_GUID"]
+    sequence_guid = request.headers['HTTP_X_DELIVEROO_SEQUENCE_GUID']
     payload = request.raw_post
     digest = OpenSSL::Digest.new('sha256')
     data = "#{sequence_guid} \n #{payload}"
-    Rails.logger.info OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
-
+    status = request.headers['HTTP_X_DELIVEROO_HMAC_SHA256'] == OpenSSL::HMAC.hexdigest(
+      digest,
+      webhook_secret,
+      data
+    )
     # res = RestClient::Request.execute(method: :post,
     #                                   url: "https://developers.deliveroo.net/v1/orders/116504947708-5729/sync_status",
     #                                   user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
@@ -44,6 +47,7 @@ class LamdbaController < ApplicationController
     #                                     "reason": 'invalid_total_price',
     #                                     "notes": ''
     #                                   })
-    render json: { msg: "welcome" }
+    Rails.logger.info status
+    render json: { msg: status }
   end
 end
