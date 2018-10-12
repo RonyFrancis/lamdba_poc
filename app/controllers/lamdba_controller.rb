@@ -32,7 +32,7 @@ class LamdbaController < ApplicationController
     payload = request.raw_post
     digest = OpenSSL::Digest.new('sha256')
     data = "#{sequence_guid} \n #{payload}"
-    Rails.logger.inf OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
+    Rails.logger.info OpenSSL::HMAC.hexdigest(digest, webhook_secret, data)
 
     # res = RestClient::Request.execute(method: :post,
     #                                   url: "https://developers.deliveroo.net/v1/orders/116504947708-5729/sync_status",
