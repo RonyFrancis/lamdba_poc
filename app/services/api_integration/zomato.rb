@@ -1,6 +1,6 @@
 module ApiIntegration
   class Zomato
-    def self.authenticate(request)
+    def authenticate(request)
       request.headers['PATH_INFO']
     end
   end

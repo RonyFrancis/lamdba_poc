@@ -22,9 +22,7 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
-    ApiIntegration.request_info(request)
     Rails.logger.info 'a' * 10
-    Rails.logger.info params['order']['id']
     Rails.logger.info request.original_url
     Rails.logger.info request.remote_ip
     Rails.logger.info request.raw_post
