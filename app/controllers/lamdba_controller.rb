@@ -3,11 +3,13 @@ class LamdbaController < ApplicationController
   skip_before_action :verify_authenticity_token
   require 'openssl'
   def create
+    puts params
     id = Lamdba.new.details(params['lamdba'])
     redirect_to lamdba_path(id)
   end
 
   def new
+    puts "a"
     @lamdba = Lamdba.new
   end
 
@@ -20,7 +22,7 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
-    request.headers.each { |key, value| Rails.logger.info %(#{key} : #{value}) }
+    ApiIntegration.request_info(request)
     Rails.logger.info 'a' * 10
     Rails.logger.info params['order']['id']
     Rails.logger.info request.original_url
