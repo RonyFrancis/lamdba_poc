@@ -5,6 +5,8 @@ module ApiIntegration
       case request.headers['PATH_INFO']
       when '/welcome'
         ApiIntegration::Deliveroo.new
+      when '/deliveroo'
+        ApiIntegration::Deliveroo.new
       when '/zomato'
         ApiIntegration::Zomato.new
       end
