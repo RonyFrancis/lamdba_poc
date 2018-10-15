@@ -32,6 +32,8 @@ class LamdbaController < ApplicationController
     Rails.logger.info 'a' * 10
     Rails.logger.info params
     Rails.logger.info 'v' * 10
+    request.headers.each { |key, value| Rails.logger.info %Q(#{key} : #{value}) }
+    Rails.logger.info 'b' * 10
     @api = ApiIntegration.get_api_integration_instance(request)
     status = @api.authenticate(request)
     # res = RestClient::Request.execute(method: :post,
