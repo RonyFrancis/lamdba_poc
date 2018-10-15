@@ -30,6 +30,8 @@ class LamdbaController < ApplicationController
     Rails.logger.info request.headers['HTTP_X_DELIVEROO_HMAC_SHA256']
     Rails.logger.info request.raw_post
     Rails.logger.info 'a' * 10
+    Rails.logger.info params
+    Rails.logger.info 'v' * 10
     @api = ApiIntegration.get_api_integration_instance(request)
     status = @api.authenticate(request)
     # res = RestClient::Request.execute(method: :post,
