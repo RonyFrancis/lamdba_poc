@@ -22,18 +22,18 @@ class LamdbaController < ApplicationController
   end
 
   def welcome
-    Rails.logger.info 'a' * 10
-    Rails.logger.info request.original_url
-    Rails.logger.info request.remote_ip
-    Rails.logger.info request.raw_post
-    Rails.logger.info request.headers['HTTP_X_DELIVEROO_SEQUENCE_GUID']
-    Rails.logger.info request.headers['HTTP_X_DELIVEROO_HMAC_SHA256']
-    Rails.logger.info request.raw_post
-    Rails.logger.info 'a' * 10
-    Rails.logger.info params
-    Rails.logger.info 'v' * 10
-    request.headers.each { |key, value| Rails.logger.info %Q(#{key} : #{value}) }
-    Rails.logger.info 'b' * 10
+    # Rails.logger.info 'a' * 10
+    # Rails.logger.info request.original_url
+    # Rails.logger.info request.remote_ip
+    # Rails.logger.info request.raw_post
+    # Rails.logger.info request.headers['HTTP_X_DELIVEROO_SEQUENCE_GUID']
+    # Rails.logger.info request.headers['HTTP_X_DELIVEROO_HMAC_SHA256']
+    # Rails.logger.info request.raw_post
+    # Rails.logger.info 'a' * 10
+    # Rails.logger.info params
+    # Rails.logger.info 'v' * 10
+    # request.headers.each { |key, value| Rails.logger.info %Q(#{key} : #{value}) }
+    # Rails.logger.info 'b' * 10
     @api = ApiIntegration.get_api_integration_instance(request)
     status = @api.authenticate(request)
     # res = RestClient::Request.execute(method: :post,
