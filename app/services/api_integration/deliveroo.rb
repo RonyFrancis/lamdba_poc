@@ -3,7 +3,7 @@ module ApiIntegration
     def authenticate(request)
       webhook_secret = '8a10a0d9-3366-4486-a945-36c804572373'
       sequence_guid = request.headers['HTTP_X_DELIVEROO_SEQUENCE_GUID']
-      payload = request.headers['action_dispatch.request.request_parameters']
+      payload = request.headers['action_dispatch.request.request_parameters'].to_json
       payload2 = request.raw_post
       digest = OpenSSL::Digest.new('sha256')
       Rails.logger.info webhook_secret
