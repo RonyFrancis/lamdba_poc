@@ -49,4 +49,11 @@ class LamdbaController < ApplicationController
     Rails.logger.info status
     render json: { msg: status }
   end
+  def sync_status
+    Rails.logger.info params
+    render json: { order_id: params[:order_id] }
+  end
+  def prep_stage
+    render json: { order_id: params[:order_id]}
+  end
 end

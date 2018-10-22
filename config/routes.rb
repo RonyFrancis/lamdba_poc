@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   post '/welcome', to: 'lamdba#welcome'
   post '/deliveroo', to: 'lamdba#welcome'
   root to: 'lamdba#new'
+  post '/v1/orders/:order_id/sync_status',  to: 'lamdba#sync_status'
+  post '/v1/orders/:order_id/prep_stage', to: 'lamdba#prep_stage'
 end
