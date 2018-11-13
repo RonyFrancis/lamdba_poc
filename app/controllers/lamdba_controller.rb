@@ -23,6 +23,7 @@ class LamdbaController < ApplicationController
 
   def welcome
     Rails.logger.info params
+    Rails.logger.info params.class
     # @api = ApiIntegration.get_api_integration_instance(request)
     # status = @api.authenticate(request)
     # res = RestClient::Request.execute(method: :post,
