@@ -25,6 +25,7 @@ class LamdbaController < ApplicationController
     Rails.logger.info params
     Rails.logger.info params.class
     Rails.logger.info params["invoice_id"]
+    Rails.logger.info params["invoice_id"].class
     # @api = ApiIntegration.get_api_integration_instance(request)
     # status = @api.authenticate(request)
     # res = RestClient::Request.execute(method: :post,
