@@ -47,17 +47,20 @@ class LamdbaController < ApplicationController
     render json: { order_id: params[:order_id] }
   end
   def prep_stage
-    res = RestClient::Request.execute(method: :post,
-                                      url: "https://4edi1hqmul.execute-api.us-east-2.amazonaws.com/sync_status2/prep-stage/771504902908-5729",
-                                      user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
-                                      password: '42c11fb4-d895-4529-9c3f-7de6332ef9a9',
-                                      payload: {
-                                        "occurred_at": Time.now.strftime('%FT%TZ'),
-                                        "stage": 'ready_for_collection'
-                                      })
 
-    puts res.code.inspect
-    render json: res.body.to_json
+    IpmListenerWorker.perform_in(5.seconds, {a:1})
+    # res = RestClient::Request.execute(method: :post,
+    #                                   url: "https://4edi1hqmul.execute-api.us-east-2.amazonaws.com/sync_status2/prep-stage/771504902908-5729",
+    #                                   user: 'SAPAAD_PTE_LTD_Test--0075e1ef-4fa4-46b5-8ee3-bb1cc243bb3f',
+    #                                   password: '42c11fb4-d895-4529-9c3f-7de6332ef9a9',
+    #                                   payload: {
+    #                                     "occurred_at": Time.now.strftime('%FT%TZ'),
+    #                                     "stage": 'ready_for_collection'
+    #                                   })
+    #
+    # puts res.code.inspect
+    # render json: res.body.to_json
+    render json: { a: 1}
   rescue
     render json: {}.to_json
   end
